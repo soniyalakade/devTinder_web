@@ -1,13 +1,5 @@
 @import "tailwindcss" ;
 @plugin "daisyui";
 
-@theme {
-  --breakpoint-*: initial;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
 
-  --color-twitter-blue: #1da1f2;
-  --color-orange-500: #ffa500;
-}
 
