@@ -1,10 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Body from './Body'
-import Profile from './Profile'
-import Login from './Login'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import Feed from "./components/Feed";
+
+import Body from "./components/Body";
+import Profile from "./components/Profile";
+import Login from "./components/Login";
+import "./index.css";
+import appStore  from "./utils/appStore";
 
 // Define routes
 const appRouter = createBrowserRouter([
@@ -14,18 +18,24 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "profile",
-        element: <Profile />
+        element: <Profile />,
       },
       {
         path: "login",
-        element: <Login />
-      }
-    ]
-  }
+        element: <Login />,
+      },
+      {
+        index: "Feed",
+        element: <Feed />,
+      },
+    ],
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={appRouter} />
-  </React.StrictMode>,
-)
+    <Provider store={appStore}>
+      <RouterProvider router={appRouter} />
+    </Provider>
+  </React.StrictMode>
+);

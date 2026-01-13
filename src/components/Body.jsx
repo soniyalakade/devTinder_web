@@ -3,6 +3,10 @@ import NavBar from './NavBar'
 import Footer from './Footer'
 
 const Body = () => {
+
+    const fetchUser = async () => {
+        const user = await axios.get()
+    }
     return (
         <div>
             <NavBar />
