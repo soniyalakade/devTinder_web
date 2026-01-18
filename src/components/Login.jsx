@@ -20,7 +20,6 @@ const Login = () => {
         { withCredentials: true }
       );
 
-      console.log("Login response:", res.data);
 
       dispatch(addUser(res.data.user));
 
