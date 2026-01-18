@@ -6,9 +6,9 @@ import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("");
-  const [password, setPassword] = useState("");
-
+  const [emailId, setEmailId] = useState("soniyalakade@gmail.com");
+  const [password, setPassword] = useState("Soniya@2004");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
@@ -24,9 +24,9 @@ const Login = () => {
 
       dispatch(addUser(res.data.user));
 
-      navigate("/"); 
+      return navigate("/"); 
     } catch (err) {
-      console.error(err);
+      setError(err?.response?.data || "Something went wrong");
     }
   };
 
@@ -60,6 +60,7 @@ const Login = () => {
             />
           </div>
 
+          <p className="text-red-500">{error}</p>
           <div className="mt-6">
             <button
               className="btn btn-primary w-full"
