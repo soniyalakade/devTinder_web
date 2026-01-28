@@ -7,7 +7,8 @@ import Feed from "./components/Feed";
 import Body from "./components/Body";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
-import Connections from "./components/Connections"
+import Connections from "./components/Connections";
+import Requests from "./components/Requests";
 import "./index.css";
 import appStore  from "./utils/appStore";
 
@@ -32,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path: "connections",
         element: <Connections />,
+      },
+      {
+        path: "requests",
+        element: <Requests />,
       },
     ],
   },
