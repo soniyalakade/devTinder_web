@@ -6,8 +6,11 @@ import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("soniyalakade@gmail.com");
-  const [password, setPassword] = useState("Soniya@2004");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
+  const[firstName, setFirstName] = useState("");
+  const[lastName, setLastName] =useState("");
+  const[isLoginForm, setIsLoginForm] = useState(true);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate(); 
@@ -33,9 +36,39 @@ const Login = () => {
     <div className="flex justify-center my-10">
       <div className="card bg-base-300 w-96 shadow-sm">
         <div className="card-body">
-          <h2 className="card-title justify-center">Login</h2>
+          <h2 className="card-title justify-center">{isLoginForm ? "Login" : "Signup"}</h2>
 
           <div>
+            {!isLoginForm && (
+              <>
+                <div>
+                  <h3 className="mt-4 mb-3">Enter First Name</h3>
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="First Name"
+                    required
+                    className="input input-bordered w-full"
+                  />
+                </div>
+
+                <div>
+                  <h3 className="mt-4 mb-3">Enter Last Name</h3>
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Last Name"
+                    required
+                    className="input input-bordered w-full"
+                  />
+                </div>
+              </>
+            )}
+            </div>
+
+           <div>
             <h3 className="mt-4 mb-3">Enter Email Id</h3>
             <input
               type="email"
@@ -65,9 +98,10 @@ const Login = () => {
               className="btn btn-primary w-full"
               onClick={handleLogin}
             >
-              Login
+              {isLoginForm? "Login":"Sign up"}
             </button>
           </div>
+          <p className="flex justify-center cursor-pointer py-2" onClick={() => setIsLoginForm(value => !value)}>{isLoginForm? "New User?  Sign up here" : "Existing User? Login Here"}</p>
         </div>
       </div>
     </div>
